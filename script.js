@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function () {
         viewOrderContent.innerHTML = `
             <p><strong>Дата оформления:</strong> ${order.date} ${order.time}</p>  
             <p><strong>Состав:</strong> ${order.items.map(item => `${item.name}`).join(', ')}</p>
-            <p><strong>Итоговая сумма:</strong> ${order.totalPrice} руб.</p>
+            <p><strong>Итоговая сумма:</strong> ${finalTotal} руб.</p>
             <p><strong>Дата и интервал доставки:</strong> ${order.deliveryDate}, ${order.deliveryTime}</p>
             <p><strong>Комментарий:</strong> ${order.comment || 'Нет комментариев'}</p>
         `;
