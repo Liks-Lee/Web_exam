@@ -4,6 +4,42 @@ document.addEventListener('DOMContentLoaded', function () {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     let originalProducts = [];
     let filteredProducts = [];
+    let currentSort = 'popularity'; // Для отслеживания текущего критерия сортировки
+
+    // Функция для сортировки товаров с учетом скидки, если она есть
+    function sortProducts(criteria) {
+        if (criteria === 'popularity') {
+            // Возвращаем товары в исходный порядок (по умолчанию)
+            filteredProducts = [...originalProducts]; // Восстанавливаем исходный порядок товаров
+        } else {
+            // Сортировка с учетом скидки, если она есть
+            filteredProducts.sort((a, b) => {
+                const priceA = a.discount_price || a.actual_price; // Если есть скидка
+                const priceB = b.discount_price || b.actual_price; // Если есть скидка
+
+                switch (criteria) {
+                    case 'price-asc':
+                        return priceA - priceB; // По цене от меньшей к большей
+                    case 'price-desc':
+                        return priceB - priceA; // По цене от большей к меньшей
+                    case 'rating':
+                        return (b.rating || 0) - (a.rating || 0); // По рейтингу
+                    default:
+                        return 0; // Без сортировки по умолчанию
+                }
+            });
+        }
+
+        currentSort = criteria; // Обновляем текущий критерий сортировки
+        renderProducts(); // Обновляем отображение товаров
+    }
+
+    // Обработчик изменения сортировки
+    const sortSelect = document.getElementById('sort-options');
+    sortSelect.addEventListener('change', function () {
+        const selectedOption = sortSelect.value;
+        sortProducts(selectedOption); // Сортируем товары по выбранному критерию
+    });
 
     // Функция для отображения товаров
     function renderProducts() {
@@ -346,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const response = await fetch('https://edu.std-900.ist.mospolytech.ru/exam-2024-1/api/goods?api_key=53c010a5-dd23-448e-ba0f-9df5fee7e3e3');
         const data = await response.json();
         originalProducts = data;
-        filteredProducts = data;
+        filteredProducts = data; // Изначально показываем все товары
         renderProducts();
         renderCart();
     }
