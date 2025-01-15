@@ -1,0 +1,812 @@
+/* styles.css */
+
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    padding-top: 70px; /* Чтобы контент не перекрывался фиксированным хедером */
+    min-height: 100vh; /* Страница всегда будет занимать всю высоту */
+    display: flex;
+    flex-direction: column; /* Для правильного распределения контента колонками*/
+}
+
+/* Header */
+header {
+    background-color: hsl(0, 93%, 72%);
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .logo-image {
+    width: 20px; /* Ширина логотипа */
+    height: auto; /* Высота будет пропорциональна ширине */
+}
+
+header .search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+header .search-bar input {
+    padding: 5px;
+    font-size: 16px;
+    width: 200px;
+    border-radius: 5px;
+    color: #000;
+}
+
+.header-links {
+    display: flex;
+    gap: 20px; /* Расстояние между иконками */
+}
+
+.header-links a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.header-links img {
+    width: 24px; /* Устанавливает размер изображения */
+    height: 24px;
+    transition: transform 0.2s; /* Добавляет эффект при наведении */
+}
+
+.header-links a.active img {
+    width: 28px; /* Увеличенный размер для активной ссылки */
+    height: 28px;
+}
+
+.header-links img:hover {
+    transform: scale(1.1); /* Увеличивает иконку при наведении */
+}
+
+
+.search-bar #autocomplete-suggestions {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    right: 0;
+    color: #000; /* Черный цвет для текста подсказок */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.search-bar #autocomplete-suggestions li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.search-bar #autocomplete-suggestions li:hover {
+    background-color: #ddd;
+}
+
+
+header .header-links a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header .header-links a:hover {
+    text-decoration: underline;
+}
+
+header .header-links .active {
+    font-weight: bold;
+}
+
+/* Сайдбар */
+aside {
+    width: 250px;
+    padding: 20px;
+    background-color: white;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    height: calc(80%);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+aside h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+aside form {
+    display: flex;
+    flex-direction: column;
+}
+
+aside form div {
+    margin-bottom: 10px;
+}
+
+aside form label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+aside form input[type="number"], aside form input[type="checkbox"] {
+    font-size: 14px;
+    padding: 5px;
+}
+
+aside form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+aside form button:hover {
+    background-color: #45a049;
+}
+
+/* Каталог */
+.main_c {
+    margin-left: 270px;
+    padding: 20px;
+    flex-grow: 1; /* Это позволяет основному контенту расширяться и занимать доступное пространство */
+}
+
+main h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#sort-options {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Обновленный стиль для карточки товара */
+.product-card {
+    border: 1px solid #000000;
+    padding: 15px;
+    text-align: center;
+    width: 200px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Это выравнивает элементы по вертикали */
+    height: auto; /* Позволяет карточке подстраиваться по высоте */
+    min-height: 400px; /* Добавляем минимальную высоту для карточки */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Заставляет изображение занимать всю доступную высоту, сохраняя пропорции */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-card .product-rating {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.product-card .old-price {
+    color: red;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.product-card .discount-price {
+    color: green;
+    font-weight: bold;
+}
+
+.product-card .price {
+    margin: 5px 0;
+}
+
+.product-card button {
+    background-color: #ff009d;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-top: auto; /* Это гарантирует, что кнопка будет внизу */
+}
+
+.product-card button:hover {
+    background-color: #b30077;
+}
+
+.clear-cart-btn{
+    background-color: #ff009d;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+/* Футер */
+footer {
+    background-color: #6d0000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: auto; /* Этот стиль гарантирует, что футер будет внизу */
+}
+
+footer div {
+    font-size: 14px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопка загрузить ещё */
+#load-more {
+    background-color: #ff0095;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+}
+
+#load-more:hover {
+    background-color: #d307c2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header .logo {
+        font-size: 20px;
+    }
+
+    header .search-bar input {
+        width: 150px;
+    }
+
+    aside {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .product-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+}
+
+
+
+/* Уменьшаем ширину полей ввода для цены */
+#filters-form input[type="number"] {
+    width: 80px; /* Уменьшаем ширину поля */
+    padding: 5px;
+    margin: 5px 0;
+}
+
+#filters-form label {
+    font-size: 14px; /* Уменьшаем размер шрифта для меток */
+}
+
+#filters-form div {
+    margin-bottom: 10px; /* Добавляем отступ между строками */
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header .header-links a {
+        margin: 10px 0;
+    }
+
+    main {
+        margin-left: 0;
+        padding-left: 15px; /* Уменьшаем отступ на мобильных */
+    }
+
+    aside {
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    #product-grid {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        width: 100%;
+    }
+
+    main {
+        padding: 10px;
+    }
+}
+/* Карточки товаров для корзины */
+#cart-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    border: 1px solid #000;
+    padding: 15px;
+    text-align: center;
+    width: 200px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    min-height: 400px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-card .product-rating {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.product-card .old-price {
+    color: red;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.product-card .discount-price {
+    color: green;
+    font-weight: bold;
+}
+
+.product-card .price {
+    margin: 5px 0;
+}
+
+.product-card button {
+    background-color: #ff33cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-top: auto;
+}
+
+.product-card button:hover {
+    background-color: #6b0048;
+}
+
+/* Стили для формы заказа */
+.order {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order h2 {
+    margin-bottom: 20px;
+}
+
+/* Стили для формы заказа */
+.order__form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.order__column {
+    flex: 1 1 45%; /* Две колонки по 45% ширины с зазором */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order__submit {
+    align-self: center;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+.order__field {
+    display: flex;
+    flex-direction: column;
+}
+
+.order__field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.order__field input, 
+.order__field select, 
+.order__field textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.order__field textarea {
+    resize: vertical;
+}
+
+
+.order__submit:hover {
+    background-color: #45a049;
+}
+#orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#orders-table th, #orders-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#orders-table th {
+    background-color: #502c4b;
+    color: white;
+}
+
+#orders-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#orders-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+/* Основные стили для модальных окон */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Отображение модального окна */
+.modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Стили для содержимого модального окна */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для кнопок */
+button {
+    background-color: #dd45b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button.close-modal {
+    background-color: #dc3545;
+}
+
+/* Стили для заголовков */
+h3 {
+    margin-top: 0;
+}
+
+/* Скрытие модального окна */
+.hidden {
+    display: none;
+}
+/* Дополнительные стили для формы редактирования */
+#edit-order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#edit-order-form input, #edit-order-form textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#edit-order-form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#edit-order-form button.close-modal {
+    background-color: #dc3545;
+}
+/* Стиль для поля select (выбор интервала времени) */
+select {
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 100%;  /* Ширина select будет равна ширине родительского контейнера */
+    box-sizing: border-box;  /* Учитываем padding в ширину */
+    appearance: none;  /* Убирает стандартный стиль браузера для select */
+    -webkit-appearance: none; /* Убирает стандартный стиль в Safari */
+    -moz-appearance: none; /* Убирает стандартный стиль в Firefox */
+}
+
+/* Стиль для контейнера select (для создания красивого стрелочного индикатора) */
+select:focus {
+    border-color: #ff00d4;  /* Розовые границы при фокусе */
+    outline: none;  /* Убираем стандартное обводка при фокусе */
+}
+
+/* Стиль для стрелки в select */
+select::-ms-expand {
+    display: none;  /* Убирает стрелку для IE/Edge */
+}
+
+/* Стиль для метки рядом с select */
+label[for="edit-deliveryTime"] {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* Уведомление */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ffebeb;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+/* Кнопка закрытия */
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4fd9a4;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+}
+
+.notification-close:hover {
+    color: #000000;
+}
+
+/* Анимация появления */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Общие стили для модального окна удаления заказа */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.custom-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.custom-confirm-button,
+.custom-cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.custom-confirm-button {
+    background: #d9534f;
+    color: white;
+}
+
+.custom-cancel-button {
+    background: #5bc0de;
+    color: white;
+}
+
+.custom-confirm-button:hover {
+    background: #c9302c;
+}
+
+.custom-cancel-button:hover {
+    background: #31b0d5;
+}
+
+
+
+

@@ -1,0 +1,117 @@
+<!-- cart.html -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        main {
+            justify-content: center;     /* Центрируем по горизонтали */
+            align-items: center;         /* Центрируем по вертикали */
+            min-height: 100vh;            /* Минимальная высота, чтобы контент был по центру экрана */
+            padding: 20px;               /* Отступы для улучшения восприятия */
+            box-sizing: border-box;      /* Включаем отступы в расчет общей ширины/высоты */
+            text-align: center;          /* Центрируем текст внутри */
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" class="logo-image"> Магазин
+        </div>
+        <div class="header-links">
+                <a href="index.html" id="catalog-link">
+                    <img src="images/catalog-icon.png" alt="Каталог" class="header-icon">
+                </a>
+                <a href="cart.html" class="active" id="cart-link">
+                    <img src="images/cart-icon.png" alt="Корзина" class="header-icon">
+                </a>
+                <a href="account.html" id="account-link">
+                    <img src="images/account-icon.png" alt="Личный кабинет" class="header-icon">
+                </a>
+            
+            <!-- <a href="index.html" id="catalog-link">Каталог</a>
+            <a href="cart.html" class="active" id="cart-link">Корзина</a>
+            <a href="account.html" id="account-link">Личный кабинет</a> -->
+        </div>
+    </header>
+
+    <!-- Мэйн -->
+    <main class="main">
+        <section class="cart">
+            <h2>Корзина</h2>
+            <div id="cart-empty-message" class="cart__empty-message">Корзина пуста. Перейдите в каталог, чтобы добавить товары.</div>
+            <div id="cart-content" class="cart__content">
+                <!-- Товары будут загружаться динамически -->
+            </div>
+            <div id="total-price" class="cart__total-price">Итоговая стоимость: 0 руб.</div>
+            <div id="delivery-price" class="cart__delivery-price">Стоимость доставки: 200 руб.</div>
+
+            <button id="clear-cart-btn" class="clear-cart-btn">Очистить корзину</button>
+        </section>
+
+        <!-- Форма для заполнения -->
+        <section id="order-section" class="order">
+            <h2>Оформление заказа</h2>
+            <form id="order-form" class="order__form">
+                <div class="order__column">
+                    <div class="order__field">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="order__field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="order__field">
+                        <label for="phone">Телефон:</label>
+                        <input type="text" id="phone" name="phone" required>
+                    </div>
+                    <div class="order__field">
+                        <label>
+                            <input type="checkbox" id="subscribe" name="subscribe">
+                            Согласие на получение рассылки
+                        </label>
+                    </div>
+                </div>
+                <div class="order__column">
+                    <div class="order__field">
+                        <label for="address">Адрес доставки:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="order__field">
+                        <label for="delivery-date">Дата доставки:</label>
+                        <input type="date" id="delivery-date" name="delivery-date" required>
+                    </div>
+                    <div class="order__field">
+                        <label for="delivery-time">Временной интервал доставки:</label>
+                        <select id="delivery-time" name="delivery-time">
+                            <option value="9:00-12:00">9:00-12:00</option>
+                            <option value="12:00-15:00">12:00-15:00</option>
+                            <option value="15:00-18:00">15:00-18:00</option>
+                        </select>
+                    </div>
+                    <div class="order__field">
+                        <label for="comment">Комментарий:</label>
+                        <textarea id="comment" name="comment"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="order__submit">Оформить заказ</button>
+            </form>
+        </section>
+        
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <p>&copy; 2025 Интернет-магазин</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

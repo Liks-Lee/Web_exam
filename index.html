@@ -1,0 +1,77 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Хедер -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" class="logo-image"> Магазин
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Поиск товаров">
+            <ul id="autocomplete-suggestions" class="autocomplete-suggestions"></ul>
+            <button id="search-btn">Найти</button>
+        </div>
+        <div class="header-links">
+            <a href="index.html" class="active" id="catalog-link">
+                <img src="images/catalog-icon.png" alt="Каталог" class="header-icon">
+            </a>
+            <a href="cart.html" id="cart-link">
+                <img src="images/cart-icon.png" alt="Корзина" class="header-icon">
+            </a>
+            <a href="account.html" id="account-link">
+                <img src="images/account-icon.png" alt="Личный кабинет" class="header-icon">
+            </a>
+        </div>
+        
+    </header>
+
+    <!-- Сайдбар с формой для фильтрации товаров -->
+    <aside>
+        <h3>Фильтры</h3>
+        <form id="filters-form">
+            <div>
+                <label for="price-from">Цена от:</label>
+                <input type="number" id="price-from" placeholder="От">
+            </div>
+            <div>
+                <label for="price-to">Цена до:</label>
+                <input type="number" id="price-to" placeholder="До">
+            </div>
+            <div>
+                <input type="checkbox" id="discount-filter"> Товары со скидкой
+            </div>
+            <button type="submit">Применить</button>
+        </form>
+    </aside>
+
+    <!-- Каталог -->
+    <main class="main_c">
+        <h2>Каталог</h2>
+        <select id="sort-options">
+            <option value="popularity" selected>По популярности</option>
+            <option value="price-asc">По цене (с меньшей до большей)</option>
+            <option value="price-desc">По цене (с большей до меньшей)</option>
+            <option value="rating">По рейтингу</option>
+        </select>
+
+        <div id="product-grid" class="product-grid"></div>
+        <button id="load-more">Загрузить ещё</button>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div>Магазин © 2025</div>
+        <div>Контакты: email@exam.com</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
